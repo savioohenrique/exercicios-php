@@ -20,7 +20,17 @@ class ProductStructure
 
     public function make(): array
     {
-        //todo your code.
-        return [];
+        foreach ($this::products as $product) {
+            $productArray = explode("-", $product);
+            $category = $productArray[0];
+            $size = $productArray[1];
+
+            if (!isset($productsList[$category][$size])) 
+                $productsList[$category][$size] = 0;
+
+            $productsList[$category][$size] += 1;
+        }
+
+        return $productsList;
     }
 }
